@@ -38,13 +38,14 @@ npm run build
 - [x] CRA - README.md - Repo
 - [ ] Define visual organization and UI components on AdobeXD
 - [ ] Update README.md with the design system
-- [ ] Tweek the development enviroment and set API endpoints and authorization token
+- [ ] Tweak the development enviroment and set API endpoints and authorization token
 - [ ] Define global states and implement React Redux and Redux Thunk
 - [ ] Build main UI components
 - [ ] Build the layout and the main views accordingly to the defined visual heriarchy
 - [ ] Add basic media queries.
 - [ ] Connect components and views with redux states
 - [ ] Write the logic of the filters
+- [ ] Implement pagination
 - [ ] Develop the presentational logic of Card component and User view
 - [ ] Implement animations
 - [ ] Testing
