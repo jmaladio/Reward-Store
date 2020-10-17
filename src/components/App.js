@@ -3,8 +3,10 @@ import { createGlobalStyle } from "styled-components";
 import { Normalize } from "styled-normalize";
 import { Provider } from "react-redux";
 import storeFactory from "store";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Home } from "components/pages";
+import { Layout } from "components/common";
+import { Home, History } from "components/pages";
 
 const store = storeFactory();
 
@@ -23,7 +25,14 @@ function App() {
       <Normalize />
       <GlobalStyle />
       <Provider store={store}>
-        <Home />
+        <Router>
+          <Layout>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/history" component={History} />
+            </Switch>
+          </Layout>
+        </Router>
       </Provider>
     </>
   );
