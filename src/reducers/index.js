@@ -5,7 +5,7 @@ import {
   USER_CLEAR_DATA,
 } from "actions";
 
-const userLoadingInProgress = (state = true, action) => {
+const userLoadingInProgress = (state = false, action) => {
   switch (action.type) {
     case USER_LOADING_IN_PROGRESS:
       return action.loading;

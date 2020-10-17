@@ -35,28 +35,28 @@ const userClearData = () => {
   };
 };
 
-export const getUser = () => {
-  return (dispatch) => {
+export const getUserData = () => {
+  return async (dispatch) => {
     dispatch(userClearData());
     dispatch(userLoadingError(false));
     dispatch(userLoadingInProgress(true));
 
-    const response = async () => {
+    try {
       const headers = {
         "Content-Type": "application/json",
         Accept: "application",
         Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
       };
-      try {
-        const userData = await axios.get(
-          "https://coding-challenge-api.aerolab.co/user/me",
-          { headers }
-        );
-        dispatch(userLoadingSuccess(userData.data));
-      } catch (error) {
-        dispatch(userLoadingError(true));
-        console.log(error);
-      }
-    };
+      const response = await axios.get(
+        "https://coding-challenge-api.aerolab.co/user/me",
+        { headers }
+      );
+      const userData = response.data;
+      dispatch(userLoadingSuccess(userData));
+      dispatch(userLoadingInProgress(false));
+    } catch (error) {
+      dispatch(userLoadingError(true));
+      console.log(error);
+    }
   };
 };
