@@ -1,13 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Layout } from "components/common";
 
-export const Home = (props) => {
-  const { onGetUserData } = props;
-
-  useEffect(() => {
-    onGetUserData();
-  }, [onGetUserData]);
-  console.log(props);
+export const Home = () => {
   return (
     <>
       <Layout>

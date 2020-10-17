@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 const HeaderWrapper = styled.header`
@@ -12,7 +12,13 @@ const HeaderWrapper = styled.header`
   align-items: center;
 `;
 
-export const Header = () => {
+export const Header = (props) => {
+  const { onGetUserData } = props;
+
+  useEffect(() => {
+    onGetUserData();
+  }, [onGetUserData]);
+  console.log(props);
   return (
     <HeaderWrapper>
       <span>SVG Logo</span>

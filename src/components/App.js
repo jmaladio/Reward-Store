@@ -4,7 +4,7 @@ import { Normalize } from "styled-normalize";
 import { Provider } from "react-redux";
 import storeFactory from "store";
 
-import { HomeReduxContainer } from "containers";
+import { Home } from "components/pages";
 
 const store = storeFactory();
 
@@ -23,7 +23,7 @@ function App() {
       <Normalize />
       <GlobalStyle />
       <Provider store={store}>
-        <HomeReduxContainer />
+        <Home />
       </Provider>
     </>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Header } from "./Header";
+import { HeaderReduxContainer } from "containers";
 
 const Content = styled.main`
   border: 1px solid orangered;
@@ -10,7 +10,7 @@ const Content = styled.main`
 export const Layout = ({ children }) => {
   return (
     <>
-      <Header />
+      <HeaderReduxContainer />
       <Content>{children}</Content>
     </>
   );
