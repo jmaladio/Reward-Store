@@ -6,8 +6,7 @@ import storeFactory from "store";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Layout } from "components/common";
-import { History } from "components/pages";
-import { HomeReduxContainer } from "containers";
+import { HomeReduxContainer, HistoryReduxContainer } from "containers";
 
 const store = storeFactory();
 
@@ -30,7 +29,7 @@ function App() {
           <Layout>
             <Switch>
               <Route exact path="/" component={HomeReduxContainer} />
-              <Route path="/history" component={History} />
+              <Route path="/history" component={HistoryReduxContainer} />
             </Switch>
           </Layout>
         </Router>

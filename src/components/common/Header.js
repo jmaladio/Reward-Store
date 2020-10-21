@@ -18,7 +18,7 @@ export const Header = (props) => {
   useEffect(() => {
     onGetUserData();
   }, [onGetUserData]);
-  console.log(props);
+
   return (
     <HeaderWrapper>
       <span>SVG Logo</span>
