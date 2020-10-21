@@ -11,7 +11,7 @@ const initialState = {
     error: false,
     data: null,
   },
-  getProducts: {
+  getProductsData: {
     loading: false,
     error: false,
     data: null,

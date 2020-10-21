@@ -76,7 +76,7 @@ export const getUserHistory = () => {
 };
 
 export const getProductsData = () => {
-  const id = "getProducts";
+  const id = "getProductsData";
   return async (dispatch) => {
     dispatch(requestStarted(id));
 
