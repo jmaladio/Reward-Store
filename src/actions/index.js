@@ -87,7 +87,7 @@ export const getProductsData = () => {
         Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
       };
       const response = await axios.get(
-        "https://coding-challenge-api.aerolab.co/user/history",
+        "https://coding-challenge-api.aerolab.co/products",
         { headers }
       );
       const productsData = response.data;
