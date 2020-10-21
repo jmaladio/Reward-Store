@@ -1,50 +1,41 @@
 import axios from "axios";
 
 // Actions
-export const USER_LOADING_SUCCESS = "LOADING_SUCCESS";
-export const USER_LOADING_IN_PROGRESS = "LOADING_IN_PROGRESS";
-export const USER_LOADING_ERROR = "LOADING_ERROR";
-export const USER_CLEAR_DATA = "CLEAR_DATA";
+export const REQUEST_STARTED = "REQUEST_STARTED";
+export const REQUEST_SUCCEEDED = "REQUEST_SUCCEEDED";
+export const REQUEST_FAILED = "REQUEST_FAILED";
 
 // Action creators
-const userLoadingSuccess = (userData) => {
+const requestStarted = (id) => {
   return {
-    type: USER_LOADING_SUCCESS,
-    payload: userData,
+    type: REQUEST_STARTED,
+    payload: { id },
   };
 };
 
-const userLoadingInProgress = (bool) => {
+const requestSucceeded = (id, data) => {
   return {
-    type: USER_LOADING_IN_PROGRESS,
-    loading: bool,
+    type: REQUEST_SUCCEEDED,
+    payload: { id, data },
   };
 };
 
-const userLoadingError = (bool) => {
+const requestFailed = (id) => {
   return {
-    type: USER_LOADING_ERROR,
-    error: bool,
-  };
-};
-
-const userClearData = () => {
-  return {
-    type: USER_CLEAR_DATA,
-    payload: {},
+    type: REQUEST_FAILED,
+    payload: { id },
   };
 };
 
 export const getUserData = () => {
+  const id = "getUserData";
   return async (dispatch) => {
-    dispatch(userClearData());
-    dispatch(userLoadingError(false));
-    dispatch(userLoadingInProgress(true));
+    dispatch(requestStarted(id));
 
     try {
       const headers = {
         "Content-Type": "application/json",
-        Accept: "application",
+        Accept: "application/json",
         Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
       };
       const response = await axios.get(
@@ -52,10 +43,57 @@ export const getUserData = () => {
         { headers }
       );
       const userData = response.data;
-      dispatch(userLoadingSuccess(userData));
-      dispatch(userLoadingInProgress(false));
+      dispatch(requestSucceeded(id, userData));
     } catch (error) {
-      dispatch(userLoadingError(true));
+      dispatch(requestFailed(id));
+      console.log(error);
+    }
+  };
+};
+
+export const getUserHistory = () => {
+  const id = "getUserHistory";
+  return async (dispatch) => {
+    dispatch(requestStarted(id));
+
+    try {
+      const headers = {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+      };
+      const response = await axios.get(
+        "https://coding-challenge-api.aerolab.co/user/history",
+        { headers }
+      );
+      const userHistory = response.data;
+      dispatch(requestSucceeded(id, userHistory));
+    } catch (error) {
+      dispatch(requestFailed(id));
+      console.log(error);
+    }
+  };
+};
+
+export const getProductsData = () => {
+  const id = "getProducts";
+  return async (dispatch) => {
+    dispatch(requestStarted(id));
+
+    try {
+      const headers = {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+      };
+      const response = await axios.get(
+        "https://coding-challenge-api.aerolab.co/user/history",
+        { headers }
+      );
+      const productsData = response.data;
+      dispatch(requestSucceeded(id, productsData));
+    } catch (error) {
+      dispatch(requestFailed(id));
       console.log(error);
     }
   };

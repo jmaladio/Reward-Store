@@ -22,8 +22,10 @@ export const Layout = ({ children }) => {
   return (
     <>
       <HeaderReduxContainer />
-      <TempMenu />
-      <Content>{children}</Content>
+      <Content>
+        <TempMenu />
+        {children}
+      </Content>
     </>
   );
 };

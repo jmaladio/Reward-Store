@@ -1,43 +1,59 @@
-import {
-  USER_LOADING_SUCCESS,
-  USER_LOADING_IN_PROGRESS,
-  USER_LOADING_ERROR,
-  USER_CLEAR_DATA,
-} from "actions";
+import { REQUEST_STARTED, REQUEST_SUCCEEDED, REQUEST_FAILED } from "actions";
 
-const userLoadingInProgress = (state = false, action) => {
-  switch (action.type) {
-    case USER_LOADING_IN_PROGRESS:
-      return action.loading;
-    default:
-      return state;
-  }
+const initialState = {
+  getUserData: {
+    loading: false,
+    error: false,
+    data: null,
+  },
+  getUserHistory: {
+    loading: false,
+    error: false,
+    data: null,
+  },
+  getProducts: {
+    loading: false,
+    error: false,
+    data: null,
+  },
 };
 
-const userLoadingError = (state = false, action) => {
+const API_REQUEST = (state = initialState, action) => {
   switch (action.type) {
-    case USER_LOADING_ERROR:
-      return action.error;
-    default:
-      return state;
-  }
-};
-
-const userData = (state = {}, action) => {
-  switch (action.type) {
-    case USER_LOADING_SUCCESS:
-      return action.payload;
-    case USER_CLEAR_DATA:
-      return action.payload;
+    case REQUEST_STARTED:
+      return {
+        ...state,
+        [action.payload.id]: {
+          loading: true,
+          error: false,
+          data: null,
+        },
+      };
+    case REQUEST_SUCCEEDED:
+      return {
+        ...state,
+        [action.payload.id]: {
+          loading: false,
+          error: false,
+          data: action.payload.data,
+        },
+      };
+    case REQUEST_FAILED:
+      return {
+        ...state,
+        [action.payload.id]: {
+          loading: false,
+          error: true,
+          data: null,
+        },
+      };
     default:
       return state;
   }
 };
 
 const rootReducer = {
-  userLoadingInProgress,
-  userLoadingError,
-  userData,
+  API_REQUEST,
 };
 
 export default rootReducer;
