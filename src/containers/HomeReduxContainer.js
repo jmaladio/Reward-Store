@@ -7,8 +7,8 @@ const mapStateToProps = (state) => {
     loading: productsDataLoading,
     error: productsDataError,
     data: productsData,
-  } = state.API_REQUEST.getProductsData;
-  const { data: userData } = state.API_REQUEST.getUserData;
+  } = state.API_GET_REQUEST.getProductsData;
+  const { data: userData } = state.API_GET_REQUEST.getUserData;
   return {
     userData,
     productsDataLoading,

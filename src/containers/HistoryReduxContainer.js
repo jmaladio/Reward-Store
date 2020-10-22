@@ -1,27 +1,27 @@
 import { connect } from "react-redux";
-import { getUserHistory } from "actions";
+import { getPurchaseHistory } from "actions";
 import { History } from "components/pages/History";
 
 const mapStateToProps = (state) => {
   const {
-    loading: userHistoryLoading,
-    error: userHistoryError,
-    data: userHistory,
-  } = state.API_REQUEST.getUserHistory;
+    loading: purchaseHistoryLoading,
+    error: purchaseHistoryError,
+    data: purchaseHistory,
+  } = state.API_GET_REQUEST.getPurchaseHistory;
 
-  const { data: userData } = state.API_REQUEST.getUserData;
+  const { data: userData } = state.API_GET_REQUEST.getUserData;
 
   return {
     userData,
-    userHistoryLoading,
-    userHistoryError,
-    userHistory,
+    purchaseHistoryLoading,
+    purchaseHistoryError,
+    purchaseHistory,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetUserHistory: () => dispatch(getUserHistory()),
+    onGetPurchaseHistory: () => dispatch(getPurchaseHistory()),
   };
 };
 

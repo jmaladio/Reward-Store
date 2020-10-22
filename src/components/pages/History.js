@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 
 export const History = (props) => {
-  const { onGetUserHistory } = props;
+  const { onGetPurchaseHistory } = props;
 
   useEffect(() => {
-    onGetUserHistory();
-  }, [onGetUserHistory]);
+    onGetPurchaseHistory();
+  }, [onGetPurchaseHistory]);
 
   return (
     <>
-      <h1>User History</h1>
+      <h1>Purchase History</h1>
     </>
   );
 };

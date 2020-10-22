@@ -1,4 +1,8 @@
-import { REQUEST_STARTED, REQUEST_SUCCEEDED, REQUEST_FAILED } from "actions";
+import {
+  GET_REQUEST_STARTED,
+  GET_REQUEST_SUCCEEDED,
+  GET_REQUEST_FAILED,
+} from "actions";
 
 const initialState = {
   getUserData: {
@@ -6,7 +10,7 @@ const initialState = {
     error: false,
     data: null,
   },
-  getUserHistory: {
+  getPurchaseHistory: {
     loading: false,
     error: false,
     data: null,
@@ -16,11 +20,13 @@ const initialState = {
     error: false,
     data: null,
   },
+  postPointsToUser: {},
+  postPurchaseToHistory: {},
 };
 
-const API_REQUEST = (state = initialState, action) => {
+const API_GET_REQUEST = (state = initialState, action) => {
   switch (action.type) {
-    case REQUEST_STARTED:
+    case GET_REQUEST_STARTED:
       return {
         ...state,
         [action.payload.id]: {
@@ -29,7 +35,7 @@ const API_REQUEST = (state = initialState, action) => {
           data: null,
         },
       };
-    case REQUEST_SUCCEEDED:
+    case GET_REQUEST_SUCCEEDED:
       return {
         ...state,
         [action.payload.id]: {
@@ -38,7 +44,7 @@ const API_REQUEST = (state = initialState, action) => {
           data: action.payload.data,
         },
       };
-    case REQUEST_FAILED:
+    case GET_REQUEST_FAILED:
       return {
         ...state,
         [action.payload.id]: {
@@ -52,8 +58,20 @@ const API_REQUEST = (state = initialState, action) => {
   }
 };
 
+const API_POST_REQUEST = (state = initialState, action) => {
+  switch (action.type) {
+    case "piripi": {
+      return {
+        ...state,
+      };
+    }
+    default:
+      return state;
+  }
+};
+
 const rootReducer = {
-  API_REQUEST,
+  API_GET_REQUEST,
 };
 
 export default rootReducer;

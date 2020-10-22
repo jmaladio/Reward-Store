@@ -1,28 +1,28 @@
 import axios from "axios";
 
 // Actions
-export const REQUEST_STARTED = "REQUEST_STARTED";
-export const REQUEST_SUCCEEDED = "REQUEST_SUCCEEDED";
-export const REQUEST_FAILED = "REQUEST_FAILED";
+export const GET_REQUEST_STARTED = "GET_REQUEST_STARTED";
+export const GET_REQUEST_SUCCEEDED = "GET_REQUEST_SUCCEEDED";
+export const GET_REQUEST_FAILED = "GET_REQUEST_FAILED";
 
 // Action creators
-const requestStarted = (id) => {
+const getRequestStarted = (id) => {
   return {
-    type: REQUEST_STARTED,
+    type: GET_REQUEST_STARTED,
     payload: { id },
   };
 };
 
-const requestSucceeded = (id, data) => {
+const getRequestSucceeded = (id, data) => {
   return {
-    type: REQUEST_SUCCEEDED,
+    type: GET_REQUEST_SUCCEEDED,
     payload: { id, data },
   };
 };
 
-const requestFailed = (id) => {
+const getRequestFailed = (id) => {
   return {
-    type: REQUEST_FAILED,
+    type: GET_REQUEST_FAILED,
     payload: { id },
   };
 };
@@ -30,7 +30,7 @@ const requestFailed = (id) => {
 export const getUserData = () => {
   const id = "getUserData";
   return async (dispatch) => {
-    dispatch(requestStarted(id));
+    dispatch(getRequestStarted(id));
 
     try {
       const headers = {
@@ -43,18 +43,18 @@ export const getUserData = () => {
         { headers }
       );
       const userData = response.data;
-      dispatch(requestSucceeded(id, userData));
+      dispatch(getRequestSucceeded(id, userData));
     } catch (error) {
-      dispatch(requestFailed(id));
+      dispatch(getRequestFailed(id));
       console.log(error);
     }
   };
 };
 
-export const getUserHistory = () => {
-  const id = "getUserHistory";
+export const getPurchaseHistory = () => {
+  const id = "getPurchaseHistory";
   return async (dispatch) => {
-    dispatch(requestStarted(id));
+    dispatch(getRequestStarted(id));
 
     try {
       const headers = {
@@ -66,10 +66,10 @@ export const getUserHistory = () => {
         "https://coding-challenge-api.aerolab.co/user/history",
         { headers }
       );
-      const userHistory = response.data;
-      dispatch(requestSucceeded(id, userHistory));
+      const purchaseHistory = response.data;
+      dispatch(getRequestSucceeded(id, purchaseHistory));
     } catch (error) {
-      dispatch(requestFailed(id));
+      dispatch(getRequestFailed(id));
       console.log(error);
     }
   };
@@ -78,7 +78,7 @@ export const getUserHistory = () => {
 export const getProductsData = () => {
   const id = "getProductsData";
   return async (dispatch) => {
-    dispatch(requestStarted(id));
+    dispatch(getRequestStarted(id));
 
     try {
       const headers = {
@@ -91,9 +91,9 @@ export const getProductsData = () => {
         { headers }
       );
       const productsData = response.data;
-      dispatch(requestSucceeded(id, productsData));
+      dispatch(getRequestSucceeded(id, productsData));
     } catch (error) {
-      dispatch(requestFailed(id));
+      dispatch(getRequestFailed(id));
       console.log(error);
     }
   };
