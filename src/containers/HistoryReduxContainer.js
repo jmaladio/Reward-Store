@@ -7,9 +7,9 @@ const mapStateToProps = (state) => {
     loading: purchaseHistoryLoading,
     error: purchaseHistoryError,
     data: purchaseHistory,
-  } = state.API_GET_REQUEST.getPurchaseHistory;
+  } = state.API_REQUEST.getPurchaseHistory;
 
-  const { data: userData } = state.API_GET_REQUEST.getUserData;
+  const { data: userData } = state.API_REQUEST.getUserData;
 
   return {
     userData,

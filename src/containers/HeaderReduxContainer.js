@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
     loading: userDataLoading,
     error: userDataError,
     data: userData,
-  } = state.API_GET_REQUEST.getUserData;
+  } = state.API_REQUEST.getUserData;
   return {
     userDataLoading,
     userDataError,
