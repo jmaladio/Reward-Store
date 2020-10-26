@@ -123,3 +123,28 @@ export const postUserPoints = (points) => {
     }
   };
 };
+
+export const postRedeem = (productId) => {
+  const id = "postRedeemToHistory";
+  return async (dispatch) => {
+    dispatch(requestStarted(id));
+
+    try {
+      const headers = {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+      };
+      const response = await axios.post(
+        "https://private-13dfc-aerolabchallenge.apiary-proxy.com/redeem",
+        { productId },
+        { headers }
+      );
+      const redeemMessage = response.data;
+      dispatch(requestSucceeded(id, redeemMessage));
+    } catch (error) {
+      dispatch(requestFailed(id));
+      console.log(error);
+    }
+  };
+};

@@ -21,7 +21,11 @@ const initialState = {
     error: false,
     data: null,
   },
-  postPurchaseToHistory: {},
+  postRedeemToHistory: {
+    loading: false,
+    error: false,
+    data: null,
+  },
 };
 
 const API_REQUEST = (state = initialState, action) => {
