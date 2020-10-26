@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { UserInterface } from "./UserInterface";
 import styled from "styled-components";
 
 const HeaderWrapper = styled.header`
@@ -13,7 +14,7 @@ const HeaderWrapper = styled.header`
 `;
 
 export const Header = (props) => {
-  const { onGetUserData } = props;
+  const { onGetUserData, ...rest } = props;
 
   useEffect(() => {
     onGetUserData();
@@ -22,7 +23,7 @@ export const Header = (props) => {
   return (
     <HeaderWrapper>
       <span>SVG Logo</span>
-      <span>User Interface</span>
+      <UserInterface {...rest} />
     </HeaderWrapper>
   );
 };
