@@ -8,10 +8,18 @@ const mapStateToProps = (state) => {
     error: userDataError,
     data: userData,
   } = state.API_REQUEST.getUserData;
+  const {
+    loading: addingPoints,
+    error: errorAddingPoints,
+    data: newPoints,
+  } = state.API_REQUEST.postPointsToUser;
   return {
     userDataLoading,
     userDataError,
     userData,
+    addingPoints,
+    errorAddingPoints,
+    newPoints,
   };
 };
 
