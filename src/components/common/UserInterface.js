@@ -11,18 +11,19 @@ const UserInterfaceWrapper = styled.div`
 
 export const UserInterface = (props) => {
   const { userDataLoading: loading, userDataError: error, userData } = props;
-  console.log(userData);
   if (userData) {
     const { name, points } = userData;
     return (
       <UserInterfaceWrapper>
-        {name} - {points}
+        <span>
+          {name} - {points}
+        </span>
       </UserInterfaceWrapper>
     );
   } else
     return (
       <UserInterfaceWrapper>
-        <p>Loading...</p>;
+        <span>Loading...</span>
       </UserInterfaceWrapper>
     );
 };
