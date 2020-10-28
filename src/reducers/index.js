@@ -4,27 +4,27 @@ const initialState = {
   getUserData: {
     loading: false,
     error: false,
-    data: null,
+    data: [],
   },
   getPurchaseHistory: {
     loading: false,
     error: false,
-    data: null,
+    data: [],
   },
   getProductsData: {
     loading: false,
     error: false,
-    data: null,
+    data: [],
   },
   postPointsToUser: {
     loading: false,
     error: false,
-    data: null,
+    data: [],
   },
   postRedeemToHistory: {
     loading: false,
     error: false,
-    data: null,
+    data: [],
   },
 };
 
@@ -36,7 +36,7 @@ const API_REQUEST = (state = initialState, action) => {
         [action.payload.id]: {
           loading: true,
           error: false,
-          data: null,
+          data: [],
         },
       };
     case REQUEST_SUCCEEDED:
@@ -54,7 +54,7 @@ const API_REQUEST = (state = initialState, action) => {
         [action.payload.id]: {
           loading: false,
           error: true,
-          data: null,
+          data: [],
         },
       };
     default:
